@@ -42,8 +42,11 @@ function ui_setup(job)
           "<tr>" +
               "<td><div id='advancedoptions'></div></td>" +
               "<td><div id='submitbar'></div></td>" +
-          "</tr>" +
+      "</tr>" +
+    // MA: MPII requirement 
+      "<tr><td><div> <a href='http://www.mpi-inf.mpg.de/imprint'>Imprint / Impressum</a> | <a href='http://www.mpi-inf.mpg.de/data-protection'>Data Protection / Datenschutzhinweis</a> </div></td></tr>" + 
       "</table>").appendTo(screen).css("width", "100%");
+
 
 
     var playerwidth = Math.max(720, job.width);
@@ -106,6 +109,7 @@ function ui_setup(job)
     "</div>");
 
     $("#submitbar").append("<div id='submitbutton' class='button'>Submit HIT</div>");
+
 
     if (mturk_isoffline())
     {
