@@ -54,6 +54,12 @@ function TrackObjectUI(button, container, videoframe, job, player, tracks)
 
         var track = tracks.add(player.frame, position, this.currentcolor[0]);
 
+	// MA:
+	if (job.pose_mode) {
+	    track.fixposition();
+            track.recordposition();                
+	}
+	
         this.drawer.disable();
         ui_disable();
 
@@ -83,6 +89,11 @@ function TrackObjectUI(button, container, videoframe, job, player, tracks)
         {
             this.tracks.resizable(false);
         }
+
+	// MA: 
+	if (job.pose_mode) {
+            this.tracks.resizable(false);
+	}
 
         this.tracks.dim(false);
         this.currentobject.track.highlight(false);
@@ -383,7 +394,13 @@ function TrackObject(job, player, container, color)
 
     this.updateboxtext = function()
     {
-        var str = "<strong>" + this.job.labels[this.label] + " " + (this.id + 1) + "</strong>";
+	// MA:
+	if (job.pose_mode) {
+	    var str = "<strong>" + this.job.labels[this.label] + "</strong>";
+	}
+	else {
+            var str = "<strong>" + this.job.labels[this.label] + " " + (this.id + 1) + "</strong>";
+	}
 
         var count = 0;
         for (var i in this.job.attributes[this.track.label])

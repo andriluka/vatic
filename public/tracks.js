@@ -527,8 +527,18 @@ function Track(player, color, position)
 
         var xtl = Math.max(pos.xtl, 0);
         var ytl = Math.max(pos.ytl, 0); 
-        var xbr = Math.min(pos.xbr, width - 1);
-        var ybr = Math.min(pos.ybr, height - 1);
+
+	// MA: remove hardcoded box with later 
+	if (this.player.job.pose_mode) {
+            var xbr = xtl + 20;
+            var ybr = ytl + 20;
+	}
+
+        // var xbr = Math.min(pos.xbr, width - 1);
+        // var ybr = Math.min(pos.ybr, height - 1);
+
+        var xbr = Math.min(xbr, width - 1);
+        var ybr = Math.min(ybr, height - 1);
 
         var fpos = new Position(xtl, ytl, xbr, ybr);
         fpos.occluded = pos.occluded;
@@ -655,7 +665,6 @@ function Track(player, color, position)
             var t = this.handle.children(".boundingboxtext");
             t.html(value).show();
         }
-
     }
 
     /*

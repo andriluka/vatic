@@ -14,6 +14,9 @@ function Job(data)
     this.thisid = null;
     this.labels = null;
 
+    // MA:
+    this.pose_mode = false;
+
     this.frameurl = function(i)
     {
         folder1 = parseInt(Math.floor(i / 100));

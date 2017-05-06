@@ -115,6 +115,10 @@ function loadingscreen(job)
                 ls.remove()
                 ui_build(job);
 
+		// MA: 
+		var parameters = mturk_parameters();
+		job.pose_mode = ("pose_mode" in parameters);
+
                 mturk_enabletimer();
 
                 eventlog("preload", "Done preloading");

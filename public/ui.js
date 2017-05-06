@@ -21,6 +21,7 @@ function ui_build(job)
             $("#turkic_acceptfirst").effect("pulsate");
         }
     });
+
 }
 
 function ui_setup(job)
