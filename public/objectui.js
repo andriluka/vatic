@@ -20,6 +20,14 @@ function TrackObjectUI(button, container, videoframe, job, player, tracks)
 
     this.startnewobject = function()
     {
+	// MA: in "pose mode" check if there are any free labels 
+	if (this.job.pose_mode) {
+	    var used_labels = this.tracks.get_used_labels();
+	    if (Object.keys(used_labels).length >= Object.keys(job.labels).length) {
+		return;
+	    }
+	}
+
         if (this.button.button("option", "disabled"))
         {
             return;
@@ -334,9 +342,16 @@ function TrackObject(job, player, container, color)
         }
         else
         {
+	    // MA: in pose mode only show labels not yet added to the image (we annotate one person only)
+	    var used_labels = this.tracks.get_used_labels();
             var html = "<p>What type of object did you just annotate?</p>";
+
+	    // MA: 
             for (var i in job.labels)
             {
+		if (job.pose_mode && (i in used_labels))
+		    continue;
+
                 var id = "classification" + this.id + "_" + i;
                 html += "<div class='label'><input type='radio' name='classification" + this.id + "' id='" + id + "'> <label for='" + id + "'>" + job.labels[i] + "</label></div>";
             }
@@ -349,8 +364,12 @@ function TrackObject(job, player, container, color)
                     me.classifyinst.remove(); 
                 });
 
+		// MA: 
                 for (var i in me.job.labels)
                 {
+		    if (me.job.pose_mode && (i in used_labels))
+			continue;
+
                     var id = "classification" + me.id + "_" + i;
                     if ($("#" + id + ":checked").size() > 0)
                     {
@@ -399,7 +418,7 @@ function TrackObject(job, player, container, color)
 	    var str = "<strong>" + this.job.labels[this.label] + "</strong>";
 	}
 	else {
-            var str = "<strong>" + this.job.labels[this.label] + " " + (this.id + 1) + "</strong>";
+            var str = "<strong>" + this.job.labels[this.label] + " " + (this.id + 1) + "</strong>";	    
 	}
 
         var count = 0;

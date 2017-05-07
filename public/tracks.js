@@ -279,6 +279,36 @@ function TrackCollection(player, job)
         me.update(me.player.frame);
     });
 
+
+    // MA: 
+    this.get_used_labels = function()
+    {
+    	var used_labels = new Object();
+    	if (this.job.pose_mode) {
+    	    for (var idx in this.tracks) {
+    		if (!this.tracks[idx].deleted && this.tracks[idx].label != null) {
+    		    used_labels[this.tracks[idx].label] = 1;
+    		}
+    	    }
+    	}
+
+    	return used_labels;
+    }
+
+    // this.get_used_labels = function()
+    // {
+    // 	var used_labels = new Object();
+    // 	if (job.pose_mode) {
+    // 	    for (var idx in this.tracks.tracks) {
+    // 		if (!this.tracks.tracks[idx].deleted && this.tracks.tracks[idx].label != null) {
+    // 		    used_labels[this.tracks.tracks[idx].label] = 1;
+    // 		}
+    // 	    }
+    // 	}
+
+    // 	return used_labels;
+    // }
+
     /*
      * Creates a new object.
      */
