@@ -1,3 +1,6 @@
+//
+// MA: what is this class doing ??? 
+//
 function TrackObjectUI(button, container, videoframe, job, player, tracks)
 {
     var me = this;
@@ -7,6 +10,8 @@ function TrackObjectUI(button, container, videoframe, job, player, tracks)
     this.videoframe = videoframe;
     this.job = job;
     this.player = player;
+
+    // MA: here tracks are "TrackCollection((player, job)"
     this.tracks = tracks;
 
     this.drawer = new BoxDrawer(videoframe);
@@ -62,7 +67,7 @@ function TrackObjectUI(button, container, videoframe, job, player, tracks)
 
         var track = tracks.add(player.frame, position, this.currentcolor[0]);
 
-	// MA:
+	// MA: 
 	if (job.pose_mode) {
 	    track.fixposition();
             track.recordposition();                
@@ -98,7 +103,7 @@ function TrackObjectUI(button, container, videoframe, job, player, tracks)
             this.tracks.resizable(false);
         }
 
-	// MA: 
+	// MA: disable resize in pose mode 
 	if (job.pose_mode) {
             this.tracks.resizable(false);
 	}

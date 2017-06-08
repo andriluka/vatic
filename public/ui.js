@@ -13,7 +13,7 @@ function ui_build(job)
     ui_setupsubmit(job, tracks);
     ui_setupclickskip(job, player, tracks, objectui);
     ui_setupkeyboardshortcuts(job, player);
-    ui_loadprevious(job, objectui);
+    ui_loadprevious(job, objectui);   
 
     $("#newobjectbutton").click(function() {
         if (!mturk_submitallowed())
@@ -418,6 +418,7 @@ function ui_setupclickskip(job, player, tracks, objectui)
     });
 }
 
+// MA: objectui is "TrackObjectUI"
 function ui_loadprevious(job, objectui)
 {
     var overlay = $('<div id="turkic_overlay"></div>').appendTo("#container");
@@ -433,7 +434,13 @@ function ui_loadprevious(job, objectui)
                                      data[i]["boxes"],
                                      data[i]["attributes"]);
         }
+
+	// MA:
+	if (job.pose_mode) {
+	    objectui.tracks.resizable(false);
+	}
     });
+
 }
 
 function ui_setupsubmit(job, tracks)

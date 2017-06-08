@@ -113,17 +113,19 @@ function loadingscreen(job)
                 }
 
                 ls.remove()
-                ui_build(job);
 
 		// MA: 
 		var parameters = mturk_parameters();
 		job.pose_mode = ("pose_mode" in parameters);
 
+		// MA: 
 		if ("pose_label_size" in parameters) {
 		    pose_label_size = parseInt(parameters["pose_label_size"]);
 		    if (!isNaN(pose_label_size))
 			job.pose_label_size = pose_label_size;
 		}
+
+                ui_build(job);
 
                 mturk_enabletimer();
                 eventlog("preload", "Done preloading");

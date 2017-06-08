@@ -279,7 +279,6 @@ function TrackCollection(player, job)
         me.update(me.player.frame);
     });
 
-
     // MA: 
     this.get_used_labels = function()
     {
@@ -561,8 +560,6 @@ function Track(player, color, position)
 
 	// MA: remove hardcoded box with later 
 	if (this.player.job.pose_mode) {
-            //var xbr = xtl + 20;
-            //var ybr = ytl + 20;
             var xbr = xtl + this.player.job.pose_label_size;
             var ybr = ytl + this.player.job.pose_label_size;
 	}
