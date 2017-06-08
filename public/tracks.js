@@ -317,7 +317,8 @@ function TrackCollection(player, job)
         var track = new Track(this.player, color, position);
         this.tracks.push(track);
 
-        console.log("Added new track");
+	// MA: 
+        //console.log("Added new track");
 
         for (var i = 0; i < this.onnewobject.length; i++)
         {
@@ -560,8 +561,10 @@ function Track(player, color, position)
 
 	// MA: remove hardcoded box with later 
 	if (this.player.job.pose_mode) {
-            var xbr = xtl + 20;
-            var ybr = ytl + 20;
+            //var xbr = xtl + 20;
+            //var ybr = ytl + 20;
+            var xbr = xtl + this.player.job.pose_label_size;
+            var ybr = ytl + this.player.job.pose_label_size;
 	}
 
         // var xbr = Math.min(pos.xbr, width - 1);
@@ -1043,7 +1046,8 @@ function Journal(start, blowradius)
      */
     this.mark = function(frame, position) 
     {
-        console.log("Marking " + frame);
+	// MA: 
+        //console.log("Marking " + frame);
 
         var newannotations = {};
 

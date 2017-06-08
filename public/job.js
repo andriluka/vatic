@@ -16,6 +16,7 @@ function Job(data)
 
     // MA:
     this.pose_mode = false;
+    this.pose_label_size=20;
 
     this.frameurl = function(i)
     {
