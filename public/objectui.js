@@ -417,7 +417,10 @@ function TrackObject(job, player, container, color)
     {
 	// MA:
 	if (job.pose_mode) {
-	    var str = "<strong>" + this.job.labels[this.label] + "</strong>";
+	    text_label_size = Math.floor(this.job.pose_label_size / 2);
+	    text_label_size = Math.max(text_label_size, 5);
+	    text_label_size = Math.min(text_label_size, 20);
+	    var str = "<strong style='font-size:" + text_label_size.toString() + "px'>" + this.job.labels[this.label] + "</strong>";
 	}
 	else {
             var str = "<strong>" + this.job.labels[this.label] + " " + (this.id + 1) + "</strong>";	    
